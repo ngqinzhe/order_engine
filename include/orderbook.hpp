@@ -72,8 +72,8 @@ private:
 
 public:
   Orderbook(std::string instrument) : instrument_(instrument) {};
-  Orderbook(const Orderbook&) = default;
-  Orderbook& operator=(const Orderbook&) = default;
+  Orderbook(const Orderbook &) = default;
+  Orderbook &operator=(const Orderbook &) = default;
   ~Orderbook() = default;
 
   std::vector<TradeInfo> insertOrder(const Order &order) {

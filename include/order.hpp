@@ -24,8 +24,8 @@ public:
     side_ = side == "BUY";
     timestamp_ = std::time(0);
   }
-  Order(const Order&) = default;
-  Order& operator=(const Order&) = default;
+  Order(const Order &) = default;
+  Order &operator=(const Order &) = default;
   ~Order() = default;
   // getters
   std::string getOrderId() const { return orderId_; }

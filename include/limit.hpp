@@ -16,8 +16,8 @@ private:
 
 public:
   Limit() {}
-  Limit(const Limit&) = default;
-  Limit& operator=(const Limit&) = default;
+  Limit(const Limit &) = default;
+  Limit &operator=(const Limit &) = default;
   ~Limit() = default;
 
   void insert(const Order &order) {

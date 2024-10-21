@@ -2,7 +2,7 @@
 build:
 	rm -rf ./build
 	cmake -S . -B build
-	cd build && cmake --build . && ./order_engine
+	cd build && cmake --build .
 
 .PHONY: clean
 clean: ## Cleans the build directory
