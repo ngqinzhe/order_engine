@@ -14,7 +14,8 @@ private:
 
 public:
   OrderEngine() {};
-  OrderEngine(const OrderEngine &rhs) = default;
+  OrderEngine(const OrderEngine&) = default;
+  OrderEngine& operator=(const OrderEngine&) = default;
   ~OrderEngine() = default;
 
   void insertOrder(const Order &order) {

@@ -19,7 +19,8 @@ private:
 
 public:
   TradeLogger() {}
-  TradeLogger(const TradeLogger &rhs) = default;
+  TradeLogger(const TradeLogger&) = default;
+  TradeLogger& operator=(const TradeLogger&) = default;
   ~TradeLogger() = default;
 
   void add(const TradeInfo &trade) { _trades.emplace_back(trade); }
