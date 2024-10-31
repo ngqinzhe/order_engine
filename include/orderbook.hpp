@@ -36,15 +36,12 @@ private:
 
       if (bid_.bestPrice() < ask_.bestPrice())
         break;
-      // std::cout << "stuck here" << "\n";
       auto bestBid = bid_.top();
       auto bestAsk = ask_.top();
       // if buy price does not match up to sell price -> no match
       while (!bestBid->empty() && !bestAsk->empty()) {
         auto bid = bestBid->front();
         auto ask = bestAsk->front();
-        // std::cout << "stuck cuz of bid: " << bid->getOrderId() << " and ask:
-        // " << ask->getOrderId() << "\n";
         double tradeQuantity =
             std::min(bid->getRemainingQuantity(), ask->getRemainingQuantity());
         double tradePrice = bid->getPrice();
@@ -62,9 +59,6 @@ private:
           removeOrder(bid->getOrderId());
         if (ask->filled())
           removeOrder(ask->getOrderId());
-
-        // std::cout << "bidsize: " << bestBid->size() << " asksize: " <<
-        // bestAsk->size() << "\n";
       }
     }
     return trades;
