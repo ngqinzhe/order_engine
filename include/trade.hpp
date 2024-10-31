@@ -13,15 +13,15 @@ struct TradeInfo {
   double price;
 };
 
-class TradeLogger {
+class TradeManager {
 private:
   std::vector<TradeInfo> _trades;
 
 public:
-  TradeLogger() {}
-  TradeLogger(const TradeLogger &) = default;
-  TradeLogger &operator=(const TradeLogger &) = default;
-  ~TradeLogger() = default;
+  TradeManager() {}
+  TradeManager(const TradeManager &) = default;
+  TradeManager &operator=(const TradeManager &) = default;
+  ~TradeManager() = default;
 
   void add(const TradeInfo &trade) { _trades.emplace_back(trade); }
 
@@ -32,7 +32,7 @@ public:
   }
 
   friend std::ostream &operator<<(std::ostream &os,
-                                  const TradeLogger &tradeLogger) {
+                                  const TradeManager &tradeLogger) {
     for (auto &trade : tradeLogger._trades) {
       os << "TRADE " << trade.instrument << " " << trade.sellOrderId << " "
          << trade.buyOrderId << " " << trade.quantity << " " << trade.price

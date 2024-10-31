@@ -9,6 +9,17 @@ e.g
 12345      BUY     BTCUSD        5          10000
 ```
 Send different order inputs that are newline (`\n`) separated into a text file for example, to run the program
+##### Example Input
+```
+12345 BUY BTCUSD 5 10000
+zod42 SELL BTCUSD 2 10001
+13471 BUY BTCUSD 6 9971
+11431 BUY ETHUSD 9 175
+abe14 SELL BTCUSD 7 9800
+plu401 SELL ETHUSD 5 170
+45691 BUY ETHUSD 3 180
+```
+#### Command
 ```
 cat sample_input.txt | ./run.sh
 ```
@@ -29,8 +40,8 @@ At the top layer is the `OrderEngine` class, it is responsible for allocating in
 #### Order Book
 The second layer is a `Orderbook` class. `Orderbook` is responsible for handling incoming `Order`s by storing them into the `Orderbook` and matching them with the `BUY` price >= `SELL` price. 
 
-#### Trade Logger
-`TradeLogger` is essentially a logger class that is responsible for storing all the trades that happen, and will print the all the trades that happened in every `Orderbook` in order.
+#### Trade Manager
+`TradeManager` is responsible for bookkeeping of all the trades that happen. It provides the function to print the all the trades that happened in every `Orderbook` in order.
 
 #### Limit
 The underlying data structure to store the orders is in a `Limit` class. `Limit` would hold the orders of a single side in a `map<double, list<OrderPointers>>`. This is because we want the orders to be sorted by price, depending on the side of orders to ensure that to get the `bestPrice()` we can do it in `O(1)`. It will also hold the the same order in a timestamp prioritized `list` to ensure that we know the order of the `Order`s by timestamp.

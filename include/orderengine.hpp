@@ -10,7 +10,7 @@ class OrderEngine {
 private:
   std::map<std::string, std::shared_ptr<Orderbook>> orderbooks_;
   // trade logger
-  TradeLogger tradeLogger_;
+  TradeManager tradeLogger_;
 
 public:
   OrderEngine() {};
