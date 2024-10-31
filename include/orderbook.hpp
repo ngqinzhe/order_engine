@@ -3,7 +3,7 @@
 #pragma once
 #include "limit.hpp"
 #include "order.hpp"
-#include "trade.hpp"
+#include "trademanager.hpp"
 #include <functional>
 #include <iostream>
 #include <memory>
