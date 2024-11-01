@@ -50,4 +50,4 @@ The underlying data structure to store the orders is in a `Limit` class. `Limit`
 `Order` class will store the respective information regarding a single order such as `orderId`, `instrument`, `price`, `quantity`, `side`, `timestamp`.
 
 ### Time Spent
-4 hours.
+4 hours
