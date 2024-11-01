@@ -19,10 +19,15 @@ abe14 SELL BTCUSD 7 9800
 plu401 SELL ETHUSD 5 170
 45691 BUY ETHUSD 3 180
 ```
-#### Command
+#### Command to run Program
 ```
 cat sample_input.txt | ./run.sh
 ```
+#### Command to run Tests
+```
+./test.sh
+```
+If you face error during this, it is likely you need to clean up the previous build file from `run.sh`. You can `rm -rf build` and run `./test.sh` again.
 
 ## Problem Approach
 ### Design
