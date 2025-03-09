@@ -1,6 +1,3 @@
-# Order Engine Submission
-### Name: Ng Qin Zhe
-
 ## Instructions on how to run
 Order inputs are created in the following format
 ```
@@ -28,31 +25,3 @@ cat sample_input.txt | ./run.sh
 ./test.sh
 ```
 If you face error during this, it is likely you need to clean up the previous build file from `run.sh`. You can `rm -rf build` and run `./test.sh` again.
-
-## Problem Approach
-### Design
-For the design of the order engine system, it must accept orders of different price, quantity, side and instruments. It must be performant, and attain a low time complexity for most of its operations.
-
-`insertOrder` & `matchOrder` is done consecutively, thus we need to ensure that the `bestPrice` from the `SELL` & `BUY` sides can be retrieved in `O(1)` time. 
-
-To do this, we use `std::map<double, std::list<Order>`, which is essentially a self-balancing tree data structure to store `Orders` in price priority, insertion would be `O(log n)` and best order retrieval would be `O(1)`.
-
-we use a `std::list` as the data structure to store `Orders`. We can store the `std::list<Order>::iterator` in a map to get quick access. This allows us to remove orders from the list in `O(1)` time.
-
-#### Order Engine
-At the top layer is the `OrderEngine` class, it is responsible for allocating instruments to their respective `Orderbook`.
-
-#### Order Book
-The second layer is a `Orderbook` class. `Orderbook` is responsible for handling incoming `Order`s by storing them into the `Orderbook` and matching them with the `BUY` price >= `SELL` price. 
-
-#### Trade Manager
-`TradeManager` is responsible for bookkeeping of all the trades that happen. It provides the function to print the all the trades that happened in every `Orderbook` in order.
-
-#### Limit
-The underlying data structure to store the orders is in a `Limit` class. `Limit` would hold the orders of a single side in a `map<double, list<OrderPointers>>`. This is because we want the orders to be sorted by price, depending on the side of orders to ensure that to get the `bestPrice()` we can do it in `O(1)`. It will also hold the the same order in a timestamp prioritized `list` to ensure that we know the order of the `Order`s by timestamp.
-
-#### Order
-`Order` class will store the respective information regarding a single order such as `orderId`, `instrument`, `price`, `quantity`, `side`, `timestamp`.
-
-### Time Spent
-4 hours

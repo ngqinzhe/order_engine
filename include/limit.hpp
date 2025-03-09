@@ -29,15 +29,15 @@ public:
     timestampContainer_.emplace_back(orderPtr);
   }
 
-  const std::list<OrderPointer>::const_iterator
-  getLatestOrder(double price) const {
+  std::list<OrderPointer>::iterator
+  getLatestOrder(double price) {
     auto end = container_.at(price)->end();
     --end;
     return end;
   }
 
-  const std::list<OrderPointer>::const_iterator getLatestOrderByTime() const {
-    auto end = timestampContainer_.end();
+  std::list<OrderPointer>::iterator getLatestOrderByTime() {
+    std::list<OrderPointer>::iterator end = timestampContainer_.end();
     --end;
     return end;
   }
@@ -50,8 +50,8 @@ public:
 
   bool empty() const { return container_.empty(); }
 
-  void remove(double price, std::list<OrderPointer>::const_iterator it,
-              std::list<OrderPointer>::const_iterator timestampIter) {
+  void remove(double price, std::list<OrderPointer>::iterator it,
+              std::list<OrderPointer>::iterator timestampIter) {
     container_[price]->erase(it);
     if (container_[price]->empty())
       container_.erase(price);

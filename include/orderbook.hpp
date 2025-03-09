@@ -15,11 +15,11 @@ class Orderbook {
 private:
   // order map to store orderId -> orders
   using OrderMap =
-      std::unordered_map<std::string, std::list<OrderPointer>::const_iterator>;
+      std::unordered_map<std::string, std::list<OrderPointer>::iterator>;
   OrderMap orderMap_;
 
   using TimestampOrderMap =
-      std::unordered_map<std::string, std::list<OrderPointer>::const_iterator>;
+      std::unordered_map<std::string, std::list<OrderPointer>::iterator>;
   TimestampOrderMap timestampOrderMap_;
 
   // bid / ask limit levels
@@ -71,8 +71,8 @@ public:
   ~Orderbook() = default;
 
   std::vector<TradeInfo> insertOrder(const Order &order) {
-    std::list<OrderPointer>::const_iterator it;
-    std::list<OrderPointer>::const_iterator timestampIter;
+    std::list<OrderPointer>::iterator it;
+    std::list<OrderPointer>::iterator timestampIter;
     if (order.isBuy()) {
       bid_.insert(order);
       it = bid_.getLatestOrder(order.getPrice());
